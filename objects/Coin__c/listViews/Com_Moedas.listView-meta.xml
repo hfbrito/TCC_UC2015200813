@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Com_Moedas</fullName>
+    <columns>NAME</columns>
+    <columns>Icone_Nome__c</columns>
+    <columns>id_api__c</columns>
+    <columns>Valor_Total__c</columns>
+    <columns>Total__c</columns>
+    <columns>Preco__c</columns>
+    <columns>Var_24hs__c</columns>
+    <columns>Var_7d__c</columns>
+    <columns>Var_30d__c</columns>
+    <columns>Var_1Ano__c</columns>
+    <columns>Website__c</columns>
+    <columns>last_updated__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Total__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Com Moedas</label>
+</ListView>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Impedir_nomes_duplicados</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(VLOOKUP($ObjectType.Coin__c.Fields.Name, $ObjectType.Coin__c.Fields.Name, UPPER(Name)) = UPPER(Name), OR(ISNEW(), ISCHANGED(Name)))</errorConditionFormula>
+    <errorMessage>Não é permitido inserir uma moeda já inserida anteriormente!</errorMessage>
+</ValidationRule>

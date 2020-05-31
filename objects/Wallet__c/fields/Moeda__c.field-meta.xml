@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moeda__c</fullName>
+    <externalId>false</externalId>
+    <label>Moeda</label>
+    <referenceTo>Coin__c</referenceTo>
+    <relationshipLabel>Endereços (Moeda)</relationshipLabel>
+    <relationshipName>Endere_os</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

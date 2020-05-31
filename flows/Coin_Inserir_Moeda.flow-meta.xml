@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formulas>
+        <name>Sigla_upper</name>
+        <dataType>String</dataType>
+        <expression>UPPER({!Sigla_da_moeda})</expression>
+    </formulas>
+    <interviewLabel>Coin Inserir Moeda {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Coin Inserir Moeda</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Criar_Moeda_id</name>
+        <label>Criar Moeda</label>
+        <locationX>311</locationX>
+        <locationY>111</locationY>
+        <connector>
+            <targetReference>Pegar_Name_da_moeda_criada</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Erro_ao_inserir</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Sigla_upper</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Coin__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Pegar_Name_da_moeda_criada</name>
+        <label>Pegar Name da moeda criada</label>
+        <locationX>437</locationX>
+        <locationY>113</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Moeda_inserida</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Criar_Moeda_id</elementReference>
+            </value>
+        </filters>
+        <object>Coin__c</object>
+        <outputAssignments>
+            <assignToReference>Name_Moeda_nova</assignToReference>
+            <field>Name</field>
+        </outputAssignments>
+    </recordLookups>
+    <screens>
+        <name>Erro_ao_inserir</name>
+        <label>Erro ao inserir</label>
+        <locationX>317</locationX>
+        <locationY>323</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>msg_erro</name>
+            <fieldText>&lt;p&gt;Moeda {!Sigla_da_moeda} não pode ser inserida. Apenas um registro por moeda pode ser inserido!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Inserir_moeda</name>
+        <label>Inserir moeda</label>
+        <locationX>174</locationX>
+        <locationY>111</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Criar_Moeda_id</targetReference>
+        </connector>
+        <fields>
+            <name>title</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Inserir Moeda&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Sigla_da_moeda</name>
+            <dataType>String</dataType>
+            <fieldText>Sigla da moeda</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>msg_obs1</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(173, 173, 173);&quot;&gt;BTC, ETH, DASH, etc&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Moeda_inserida</name>
+        <label>Moeda inserida</label>
+        <locationX>570</locationX>
+        <locationY>116</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Wallet_Inserir_Endereco</targetReference>
+        </connector>
+        <fields>
+            <name>texto_moeda_inserida</name>
+            <fieldText>&lt;p&gt;Moeda &lt;b&gt;{!Name_Moeda_nova}&lt;/b&gt; inserida com sucesso!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Continue para criar um endereço para a moeda.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>47</locationX>
+        <locationY>110</locationY>
+        <connector>
+            <targetReference>Inserir_moeda</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Wallet_Inserir_Endereco</name>
+        <label>Wallet Inserir Endereco</label>
+        <locationX>713</locationX>
+        <locationY>116</locationY>
+        <flowName>Wallet_Inserir_Endereco</flowName>
+        <inputAssignments>
+            <name>ID_Moeda</name>
+            <value>
+                <elementReference>Criar_Moeda_id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>Name_Moeda</name>
+            <value>
+                <elementReference>Name_Moeda_nova</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>Name_Moeda_nova</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

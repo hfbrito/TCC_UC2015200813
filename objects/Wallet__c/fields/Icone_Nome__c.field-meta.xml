@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Icone_Nome__c</fullName>
+    <externalId>false</externalId>
+    <formula>Moeda__r.Icone_Nome__c
+/*
+HYPERLINK(&quot;/lightning/r/Coin__c/&quot; &amp; Moeda__c &amp; &quot;/view&quot;, Moeda__r.Icone_Nome__c)
+*/</formula>
+    <label>Icone | Nome</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,8 @@
+<apex:page standardController="Coin__c">
+
+    <script>
+        // Recarrega pagina da moeda
+        window.parent.location.href="/{!Coin__c.Id}";
+    </script>
+
+</apex:page>

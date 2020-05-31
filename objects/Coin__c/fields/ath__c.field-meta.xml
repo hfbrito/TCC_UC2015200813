@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ath__c</fullName>
+    <description>All Time High</description>
+    <externalId>false</externalId>
+    <inlineHelpText>All Time High</inlineHelpText>
+    <label>Maior Preço</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>8</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moeda_Compact_Layout</fullName>
+    <fields>Icone_Sigla_Nome__c</fields>
+    <fields>Valor_Total__c</fields>
+    <fields>Total__c</fields>
+    <fields>Preco__c</fields>
+    <fields>Var_Preco__c</fields>
+    <fields>last_updated__c</fields>
+    <fields>Website__c</fields>
+    <label>Moeda_Compact_Layout</label>
+</CompactLayout>

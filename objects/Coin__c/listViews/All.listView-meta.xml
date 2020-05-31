@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Icone_Nome__c</columns>
+    <columns>Valor_Total__c</columns>
+    <columns>Total__c</columns>
+    <columns>Preco_2__c</columns>
+    <columns>Var_24hs__c</columns>
+    <columns>Var_7d__c</columns>
+    <columns>Var_30d__c</columns>
+    <columns>Var_1Ano__c</columns>
+    <columns>Website__c</columns>
+    <columns>last_updated__c</columns>
+    <columns>Avaliacao__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>
